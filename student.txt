@@ -1,0 +1,78 @@
+import java.util.Scanner;
+import java.io.FileReader;
+import java.io.*;
+
+public class student {
+    int sNo;
+    String sName;
+    String branch;
+
+    student(int a, String b, String c) {
+
+        sNo = a;
+        sName = b;
+        branch = c;
+
+    }
+    public void display() {
+        System.out.println("StudentId:" + sNo);
+        System.out.println("StudentName:" + sName);
+        System.out.println("Branch:" + branch);
+    }
+
+    public static void main(String[] args) throws Exception {
+        {
+            int a;
+            int b;
+            String s;
+            String c;
+            FileWriter writer=new FileWriter("D:\\programming\\even.txt");
+            FileWriter writer1=new FileWriter("D:\\programming\\odd.txt");
+
+            Scanner obq = new Scanner(System.in);
+            System.out.println("Enter the number of student:");
+            a = obq.nextInt();
+            int[] array=new int[a];
+            int[] array2=new int[a];
+            student[] obj = new student[a];
+            for (int i = 0; i < a; i++) {
+                System.out.println("Enter the Student N.O :");
+                b = obq.nextInt();
+
+
+                if(b%2==0) {
+                    array[i]=b;
+
+                }
+                else {
+
+                    array2[i]=b;
+                }
+
+
+                System.out.println("Enter the student Name :");
+                c = obq.next();
+                System.out.println("Enter the student Branch :");
+                s = obq.next();
+                obj[i] = new student(b, c, s);
+            }
+            int len = array.length;
+            for(int k=0;k<len;k++){
+            
+                writer.write(array[k]+"\t"+"");
+            }
+            for(int k=0;k<len;k++){
+            
+                writer1.write(array2[k]+"\t"+"");
+            }
+            writer.close();
+            writer1.close();
+
+            for (int j = 0; j < a; j++) {
+                obj[j].display();
+            }
+
+
+        }
+    }
+}
